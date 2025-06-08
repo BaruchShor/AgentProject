@@ -11,10 +11,8 @@ namespace AgentProject
     {
         static void Main(string[] args)
         {
-            AgentDAL agentDAL = new AgentDAL();
-            agentDAL.DeleteAgent(1);
-            agentDAL.GetAllAgents();
-            agentDAL.ReadAgents();
+            Menu menu = new Menu();
+            menu.displayMenu();
         }
     }
 }

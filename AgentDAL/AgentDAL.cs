@@ -27,7 +27,6 @@ namespace AgentProject
         }
         public void AddAgent(Agent agent)
         {
-            this._conn.Open();
             try
             {
                 this._query = "INSERT INTO agents (id,codeName,realName,location,status,missionsCompleted) VALUES (@Id,@CodeName,@RealName,@Location,@Status,@MissionsCompleted)";
@@ -46,7 +45,6 @@ namespace AgentProject
             }
             finally
             {
-                _conn.Close();
             }
         }
 
@@ -118,23 +116,14 @@ namespace AgentProject
             }
         }
 
-        public void ProgramManager()
+        public void OpenProgram()
         {
-            try
-            {
-                
-            }
-            catch (MySqlException ex)
-            {
+            this._conn.Open();
+        }
 
-            }
-            catch (Exception ex)
-            {
-
-            }
-            finally{
-
-            }
+        public void CloseProgram()
+        {
+            this._conn.Close();
         }
 
     }
