@@ -23,7 +23,6 @@ namespace AgentProject
         public AgentDAL()
         {
             eagleEyeDBConnection();
-            //this._conn.Open();
         }
         public void AddAgent(Agent agent)
         {
@@ -50,7 +49,6 @@ namespace AgentProject
 
         public List<Agent> GetAllAgents()
         {
-            this._conn.Open();
             this._query = "SELECT * FROM agents";
             this.cmd = new MySqlCommand(this._query, this._conn);
             MySqlDataReader reader = cmd.ExecuteReader();
@@ -64,7 +62,6 @@ namespace AgentProject
                 int missionsCompleted = reader.GetInt32("missionsCompleted");
                 allAgents.Add(new Agent(id, codeName, realName, location, status, missionsCompleted));
             }
-            this._conn.Close();
             return allAgents;
         }
 
@@ -78,7 +75,6 @@ namespace AgentProject
 
         public void UpdateAgentLocation(int agentId, string newLocation)
         {
-            this._conn.Open();
             try
             {
                 this._query = $"UPDATE agents SET location = @newLocation WHERE id = @agentId";
@@ -93,12 +89,10 @@ namespace AgentProject
             }
             finally
             {
-                this._conn.Close();
             }
         }
         public void DeleteAgent(int agentId)
         {
-            this._conn.Open();
             try
             {
                 this._query = $"DELETE FROM agents WHERE id = @agentId";
@@ -112,7 +106,6 @@ namespace AgentProject
             }
             finally
             {
-                this._conn.Close();
             }
         }
 
