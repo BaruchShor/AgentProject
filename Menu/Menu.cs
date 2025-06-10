@@ -56,7 +56,9 @@ namespace AgentProject
                     agentSystem.GetAllAgents();
                     agentSystem.ReadAgents();
                     break;
-
+                default:
+                    Console.WriteLine("No valid choice was selected.");
+                    break;
             }
 
             agentSystem.CloseProgram();
